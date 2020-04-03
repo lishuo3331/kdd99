@@ -1,3 +1,6 @@
+'''
+打分工具包
+'''
 from sklearn.metrics import make_scorer
 
 
