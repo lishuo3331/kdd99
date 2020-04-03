@@ -1,3 +1,6 @@
+'''
+特征筛选
+'''
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 import pickle
