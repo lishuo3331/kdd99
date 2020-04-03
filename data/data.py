@@ -3,6 +3,7 @@ import pandas as pd
 
 
 class Data:
+    __FILE10PCCSV = r"../data/train10pctonumber.csv"
     __FILE10PC = r"../data/train10pc"
     __FILE = r"../data/train"
     __ATTR_NAMES = ("duration",  # length (number of seconds) of the conn's
@@ -83,9 +84,11 @@ class Data:
 
     def __init__(self, filename):
         if filename == 'full':
-            self.df = pd.read_csv(self.__FILE, header=None, names=self.__ATTR_NAMES)
+            self.df = pd.read_csv(self.__FILE, header=None, names=self.__ATTR_NAMES,low_memory=False)
         elif filename == "10pc":
-            self.df = pd.read_csv(self.__FILE10PC, header=None, names=self.__ATTR_NAMES)
+            self.df = pd.read_csv(self.__FILE10PC, header=None, names=self.__ATTR_NAMES,low_memory=False)
+        elif filename == "10cpcsv":
+            self.df = pd.read_csv(self.__FILE10PCCSV, header=None, names=self.__ATTR_NAMES,low_memory=False)
         else:
             raise Exception("specify 10pc or full")
 

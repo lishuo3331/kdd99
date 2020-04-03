@@ -1,5 +1,5 @@
 '''
-生成测试数据集
+生成待分类数据集
 '''
 import numpy as np
 import pandas as pd
@@ -59,14 +59,11 @@ __ATTR_NAMES = ("duration",  # length (number of seconds) of the conn's
                 "dst_host_rerror_rate",
                 "dst_host_srv_rerror_rate",
                 # ----------
-                # category
-                "attack_type"
                 )
 
-df = pd.read_csv(r'../data/test', header=None, names=__ATTR_NAMES)
+df = pd.read_csv(r'../data/cls', header=None, names=__ATTR_NAMES)
 df = feat_utils.merge_sparse_feature(df)  #合并稀疏特征
 df = feat_utils.one_hot(df)#独热编码
-df = feat_utils.map2major5(df)#合并攻击类型
 
 # percentage check, to make sure the mapping is correct
 # print(df[df['attack_type'] == 0].shape[0] / df.shape[0])
@@ -75,5 +72,5 @@ df = feat_utils.map2major5(df)#合并攻击类型
 # print(df[df['attack_type'] == 3].shape[0] / df.shape[0])
 # print(df[df['attack_type'] == 4].shape[0] / df.shape[0])
 
-with open(r'../data/test_df.pkl', 'wb') as f:
+with open(r'../data/cls_df.pkl', 'wb') as f:
     pickle.dump(df, f)
