@@ -6,6 +6,7 @@ import pandas as pd
 from feature_engineering import feat_utils
 import pickle
 
+
 __ATTR_NAMES = ("duration",  # length (number of seconds) of the conn's
                 "protocol_type",  # symbolic, type of the protocol, e.g. tcp, udp, etc.
                 "service",  # symbolic, network service on the destination, e.g., http, telnet, etc.
@@ -61,9 +62,10 @@ __ATTR_NAMES = ("duration",  # length (number of seconds) of the conn's
                 # ----------
                 # category
                 "attack_type"
-                )
+                    )
 
 df = pd.read_csv(r'../data/test', header=None, names=__ATTR_NAMES)
+# df = pd.read_csv(path, header=None, names=__ATTR_NAMES)
 df = feat_utils.merge_sparse_feature(df)  #合并稀疏特征
 df = feat_utils.one_hot(df)#独热编码
 df = feat_utils.map2major5(df)#合并攻击类型
@@ -75,5 +77,5 @@ df = feat_utils.map2major5(df)#合并攻击类型
 # print(df[df['attack_type'] == 3].shape[0] / df.shape[0])
 # print(df[df['attack_type'] == 4].shape[0] / df.shape[0])
 
-with open(r'../data/test_df.pkl', 'wb') as f:
-    pickle.dump(df, f)
+with open(r'../data/test.pkl', 'wb') as f:
+        pickle.dump(df, f)

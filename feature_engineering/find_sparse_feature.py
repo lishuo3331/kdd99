@@ -1,8 +1,8 @@
-from data.data import Data
+from data.data1 import Data
 
 
 class SparseFeatureFinder:
-    data = Data("full")
+    data = Data("")
     df = data.df
     services = data.services
     flags = data.flags

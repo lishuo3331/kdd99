@@ -1,4 +1,4 @@
-from data.data import Data
+from data.data1 import Data
 from feature_engineering import feat_utils
 import pickle
 

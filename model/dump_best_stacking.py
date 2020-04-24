@@ -19,7 +19,7 @@ etc = ExtraTreesClassifier(n_jobs=-1, n_estimators=5, criterion="entropy")
 # lr = LogisticRegression(n_jobs=-1, C=100)  # meta classifier, 2 trees, c=100 is used in stacking2.pkl
 lr = LogisticRegression(n_jobs=-1, C=8)  # meta classifier
 
-sclf = StackingCVClassifier(classifiers=[ada, rfc, etc], meta_classifier=lr, use_probas=True, n_folds=3, verbose=3)
+sclf = StackingCVClassifier(classifiers=[ada, rfc, etc], meta_classifier=lr, use_probas=True, verbose=3)
 # sclf = StackingCVClassifier(classifiers=[rfc, etc], meta_classifier=lr, use_probas=True, n_folds=3, verbose=3)
 
 sclf.fit(X, y)
